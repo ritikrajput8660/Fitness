@@ -36,14 +36,14 @@ export default function Layout({ children }) {
   <main>
     {children}
   </main>
-  <footer>
+  {/* <footer>
     <div className='footer-text'>
       Made by {" "}
       <a href="https://github.com/laoWaiRay"> laoWaiRay </a> {" "}
       for Harvard's {" "}
       <a href="https://www.edx.org/cs50"> CS50x 2022 </a>
     </div>
-  </footer>
+  </footer> */}
   </>
   )
 }
