@@ -3,6 +3,7 @@ import { useSignup } from '../hooks/useSignup'
 
 export default function Signup() {
   const [username, setUsername] = useState("")
+  // const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const { signup, isLoading, error } = useSignup()
@@ -27,7 +28,20 @@ export default function Signup() {
             autoFocus="on"
           />
         </div>
-        
+
+
+        {/* <div className='form-group'>
+          <label htmlFor='email'>Email: </label>
+          <input 
+            id='email'
+            type="text"
+            onChange={ (e) => setEmail(e.target.value)}
+            value={email}
+            autoComplete="off"
+          />
+        </div> */}
+
+
         <div className='form-group'>
           <label htmlFor='password'>Password: </label>
           <input 
