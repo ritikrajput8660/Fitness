@@ -4,6 +4,7 @@ import { useLogin } from "../hooks/useLogin"
 export default function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("")
 
   const { login, isLoading, error } = useLogin()
 
@@ -17,9 +18,10 @@ export default function Login() {
         <h1>Sign in to view workouts</h1>
 
         <div className='form-group'>
-          <label htmlFor='username'>Username: </label>
+          {/* <label htmlFor='username'>Username: </label> */}
           <input 
             id='username'
+            placeholder='Username'
             type="text"
             onChange={ (e) => setUsername(e.target.value)}
             value={username}
@@ -27,11 +29,24 @@ export default function Login() {
             autoFocus="on"
           />
         </div>
+
+        <div className='form-group'>
+          {/* <label htmlFor='email'>Email: </label> */}
+          <input 
+            id='username'
+            placeholder='Email'
+            type="email"
+            onChange={ (e) => setEmail(e.target.value)}
+            value={email}
+            autoComplete="off"
+          />
+        </div>
         
         <div className='form-group'>
-          <label htmlFor='password'>Password: </label>
+          {/* <label htmlFor='password'>Password: </label> */}
           <input 
             id='password'
+            placeholder='Password'
             type="password"
             onChange={ (e) => setPassword(e.target.value)}
             value={password}

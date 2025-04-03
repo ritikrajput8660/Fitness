@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 :root {
   --main-color: #2785c3;
   --main-color-light: #b9dbea;
@@ -11,13 +14,14 @@
 html {
   /* 16px / 10 = 0.625 */
   /* 1 rem = 10px */
-  font-size: 62.5%;  
+  font-size: 62.5%; 
 }
 
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Lato', sans-serif;
+  /* font-family: 'Lato', sans-serif; */
+  font-family: "Roboto", sans-serif;
   font-size: 1.6rem;
   background-color: var(--white);
 }
@@ -33,7 +37,7 @@ a {
 }
 
 header {
-  background-color: var(--white);
+  background-color:#f2f2f2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -200,7 +204,8 @@ form h1 {
 }
 
 .sub-header {
-  background-color: var(--main-color-light);
+  /* background-color: var(--main-color-light); */
+  text-transform: uppercase;
   padding: 1rem 2rem;
 }
 
@@ -496,4 +501,162 @@ input[type="number"]::-webkit-inner-spin-button {
 a.active {
   color: var(--main-color);
   font-weight: 700;
+}
+
+/* Modern Signup Form Styling */
+form.signup {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 40rem;
+  padding: 3rem 4rem;
+  border-radius: 1.6rem;
+  transition: transform 0.3s ease;
+}
+
+form.signup:hover {
+  transform: translateY(-5px);
+}
+
+form.signup h1 {
+  margin-bottom: 2.5rem;
+  color: var(--grey);
+  font-weight: 600;
+  font-size: 2.8rem;
+}
+
+.form-group {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.form-group label {
+  position: absolute;
+  left: 1rem;
+  top: -1.2rem;
+  background: white;
+  padding: 0 0.8rem;
+  color: var(--main-color);
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border: 2px solid #e1e1e1;
+  border-radius: 0.8rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 3px rgba(39, 133, 195, 0.1);
+}
+
+form.signup button {
+  width: 100%;
+  padding: 1.4rem;
+  border-radius: 0.8rem;
+  background: linear-gradient(135deg, var(--main-color) 0%, #1a6698 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+  margin-top: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+form.signup button:hover {
+  background: linear-gradient(135deg, #1a6698 0%, var(--main-color) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(39, 133, 195, 0.2);
+}
+
+.error {
+  background: rgba(246, 35, 35, 0.1);
+  color: var(--danger);
+  padding: 1rem;
+  border-radius: 0.6rem;
+  font-size: 1.4rem;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+/* Modern Login Form Styling */
+form.login {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 40rem;
+  padding: 3rem 4rem;
+  border-radius: 1.6rem;
+  transition: transform 0.3s ease;
+}
+
+form.login:hover {
+  transform: translateY(-5px);
+}
+
+form.login h1 {
+  margin-bottom: 2.5rem;
+  color: var(--grey);
+  font-weight: 600;
+  font-size: 2.8rem;
+}
+
+form.login .form-group {
+  position: relative;
+  margin: 2rem 0;
+}
+
+form.login .form-group label {
+  position: absolute;
+  left: 1rem;
+  top: -1.2rem;
+  background: white;
+  padding: 0 0.8rem;
+  color: var(--main-color);
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+form.login .form-group input {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border: 2px solid #e1e1e1;
+  border-radius: 0.8rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+form.login .form-group input:focus {
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 3px rgba(39, 133, 195, 0.1);
+}
+
+form.login button {
+  width: 100%;
+  padding: 1.4rem;
+  border-radius: 0.8rem;
+  background: linear-gradient(135deg, var(--main-color) 0%, #1a6698 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+  margin-top: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+form.login button:hover {
+  background: linear-gradient(135deg, #1a6698 0%, var(--main-color) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(39, 133, 195, 0.2);
 }
