@@ -112,7 +112,7 @@ export default function Goals() {
   return (
     <div className='container goals-container'>
       <form className="goals" onSubmit={handleSubmit}>
-        <h2>Set a new goal </h2>
+        <h2>Set a new goal for exercise</h2>
         <div className='form-group'>
           <label> Exercise: </label>
           <ExerciseSelect 

@@ -15,7 +15,7 @@ export default function Layout({ children }) {
   <>
   <header>
     <Link to="/">
-      <h1 className='logo'>Workout Tracker</h1>
+      <h1 className='logo'>Fitness Tracker</h1>
     </Link>
     <nav>
       {!user ? 
