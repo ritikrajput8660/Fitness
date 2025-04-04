@@ -5,7 +5,6 @@ export default function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
-
   const { login, isLoading, error } = useLogin()
 
   const handleClick = async (e) => {
@@ -30,17 +29,7 @@ export default function Login() {
           />
         </div>
 
-        <div className='form-group'>
-          {/* <label htmlFor='email'>Email: </label> */}
-          <input 
-            id='username'
-            placeholder='Email'
-            type="email"
-            onChange={ (e) => setEmail(e.target.value)}
-            value={email}
-            autoComplete="off"
-          />
-        </div>
+       
         
         <div className='form-group'>
           {/* <label htmlFor='password'>Password: </label> */}
