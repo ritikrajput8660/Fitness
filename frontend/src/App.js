@@ -8,6 +8,7 @@ import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Exercises from "./pages/Exercises"
 import Goals from "./pages/Goals"
+import Bmi from "./pages/Bmi"
 
 function App() {
   const { user, isLoaded } = useAuthContext();
@@ -31,6 +32,15 @@ function App() {
           */}
           <Route path="/goals" element={user || token ? <Goals /> : <Navigate to="/login" />}></Route>
           <Route path="/exercises" element={user || token ? <Exercises /> : <Navigate to="/login" />}></Route>
+
+
+          <Route 
+            path="/bmi" 
+            element={user ? <Bmi/> : <Navigate to="/login" />} 
+          />
+
+
+
         </Routes>
       </Layout>
     </BrowserRouter>

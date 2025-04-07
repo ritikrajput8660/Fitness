@@ -28,6 +28,7 @@ export default function Layout({ children }) {
         <NavLink to="/" end>Home</NavLink>
         <NavLink to="/exercises">Exercises</NavLink>
         <NavLink to="/goals">Goals</NavLink>
+        <NavLink to="/bmi">BMI</NavLink>
         <button onClick={handleClick}>Log Out</button>
       </div>
       }
