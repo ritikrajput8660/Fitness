@@ -64,8 +64,8 @@ return (
       {
           bmi && (
               <div className='result'>
-                  <h3>Your BMI: {bmi}</h3>
-                  <h4 style={{color:categoryColor}}>Category: {category}</h4>
+                  <h2>Your BMI: {bmi}</h2>
+                  <h2 style={{color:categoryColor}}>Category: {category}</h2>
               </div>
           )
       }

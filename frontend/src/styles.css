@@ -252,6 +252,7 @@ form h1 {
 
 .sub-header {
   /* background-color: var(--main-color-light); */
+  font-size: larger;
   text-transform: capitalize;
   padding: 1rem 2rem;
 }
