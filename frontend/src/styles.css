@@ -20,6 +20,9 @@ body {
   font-family: 'Lato', sans-serif;
   font-size: 1.6rem;
   background-color: var(--white);
+  background-image: url('https://wallpaperaccess.com/full/1244688.jpg');
+  background-repeat: no-repeat;
+  background-size:cover ;
 }
 
 #root {
@@ -33,7 +36,7 @@ a {
 }
 
 header {
-  background-color: #f1f1f1;
+  background-color: #ebebeb32;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -48,7 +51,7 @@ header h1 {
 .nav-container a {
   font-size: 2rem;
   margin-left: 2rem;
-  color: #000;
+  color: var(--white);
 }
 
 .nav-container button {
@@ -56,7 +59,7 @@ header h1 {
   margin-left: 2rem;
   background-color: transparent;
   border: 0;
-  color: #000;
+  color: var(--main-color);
 }
 
 .nav-container button:hover {
@@ -99,7 +102,7 @@ justify-content: space-between;
 }
 
 form.signup, form.login, form.exercises, form.goals {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(229, 229, 229, 0.227);
   width: 40rem;
   justify-content: center;
   margin-top: 2rem;
@@ -116,6 +119,7 @@ form.goals {
   width: 19rem;
   padding: 0 6rem;
   height: 40rem;
+  color: var(--white);
 }
 form.goal h2 {
   margin-top: 2rem;
@@ -136,6 +140,7 @@ form.exercises {
 form.exercises {
   width: 19rem;
   padding: 0 6rem;
+  color: var(--white);
 }
 
 form.exercises h2 {
@@ -193,14 +198,19 @@ form.login button {
 
 
 
-
+::placeholder {
+  color: var(--white);
+}
 .form-group input {
   width: 100%;
   padding: 1.2rem 1.5rem;
-  border: 2px solid #e1e1e1;
+  border: 1px solid #e1e1e1;
   border-radius: 0.8rem;
   outline: none;
   transition: all 0.3s ease;
+  font-size: 1.6rem;
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.227);
 }
 
 
@@ -231,6 +241,7 @@ form button:hover {
 
 form h1 {
   margin-bottom: 1rem;
+  color: var(--white);
 }
 
 .chart-container {
@@ -243,6 +254,7 @@ form h1 {
 
 .chart-container h2 {
   margin: 1rem 0 1rem 0;
+  color: var(--white);
 }
 
 .error {
@@ -255,6 +267,7 @@ form h1 {
   font-size: larger;
   text-transform: capitalize;
   padding: 1rem 2rem;
+  color: var(--white);
 }
 
 .table {
@@ -312,14 +325,16 @@ form h1 {
 
 .table table th, .table table td {
   padding: 1rem;
+  color: var(--white);
 }
 
 .table table thead {
-  background-color: var(--main-color-light);
+  background-color: rgba(235, 234, 234, 0.300);
+  color: #000;
 }
 
 .table table th {
-  text-align: left;
+  text-align: left; 
 }
 
 td.options, th.options {
@@ -332,6 +347,7 @@ td.options button {
   border: 0;
   background-color: transparent;
   margin-left: 1rem;
+  color: var(--white);
 }
 
 td.options button:hover {
@@ -359,7 +375,7 @@ td.options button:hover {
   bottom: 1rem;
   border-radius: 4px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  background-color: var(--white);
+  background-color: rgba(255, 255, 255);
   padding: 1rem 0;
   /* height: 40rem; */
   /* width: 40rem; */
@@ -440,6 +456,8 @@ option {
 .dot {
   display: flex;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.227);
+  width: 20;
 }
 
 .time-form-group {
@@ -507,6 +525,7 @@ option {
 
 .chart-header h1 {
   margin: 0;
+  color: var(--white);
 }
 
 /* React-select select stuff */
@@ -521,6 +540,7 @@ option {
 input#time {
   padding-left: 1rem;
   width: 100%;
+  color: var(--grey);
 }
 
 input[type="number"]::-webkit-outer-spin-button, 
@@ -549,4 +569,8 @@ input[type="number"]::-webkit-inner-spin-button {
 a.active {
   color: var(--main-color);
   font-weight: 700;
+}
+
+.table-header h2{
+  color: var(--white);
 }

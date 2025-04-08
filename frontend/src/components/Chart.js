@@ -22,6 +22,11 @@ ChartJS.register(
   Legend
 );
 
+
+ChartJS.defaults.color = 'rgb(255, 255, 255)'; // For light text on dark background
+ChartJS.defaults.scale.grid.color = 'rgb(255, 255, 255)'; // For grid lines
+ChartJS.defaults.font.size=16;
+
 const options = {
   responsive: true,
   plugins: {
