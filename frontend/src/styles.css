@@ -59,11 +59,12 @@ header h1 {
   margin-left: 2rem;
   background-color: transparent;
   border: 0;
-  color: var(--main-color);
+  color: var(--white);
 }
 
 .nav-container button:hover {
   cursor: pointer;
+  color: var(--main-color);
 }
 
 footer {
