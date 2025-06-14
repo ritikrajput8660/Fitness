@@ -11,7 +11,7 @@
 html {
   /* 16px / 10 = 0.625 */
   /* 1 rem = 10px */
-  font-size: 62.5%;  
+  font-size: 62.5%;
 }
 
 body {
@@ -19,10 +19,11 @@ body {
   margin: 0;
   font-family: 'Lato', sans-serif;
   font-size: 1.6rem;
-  background-color: var(--white);
-  background-image: url('https://wallpaperaccess.com/full/1244688.jpg');
+  /* background-color: black; */
+  /* background-image: url('./assests/Free-Images-Fitness-Wallpapers-HD.jpg'); */
+  background: linear-gradient( #000000ed 0%, #250950 100%);
   background-repeat: no-repeat;
-  background-size:cover ;
+  background-size: cover;
 }
 
 #root {
@@ -102,7 +103,10 @@ justify-content: space-between;
   padding: 1.6rem 2rem;
 }
 
-form.signup, form.login, form.exercises, form.goals {
+form.signup,
+form.login,
+form.exercises,
+form.goals {
   background: rgba(229, 229, 229, 0.227);
   width: 40rem;
   justify-content: center;
@@ -120,8 +124,9 @@ form.goals {
   width: 19rem;
   padding: 0 6rem;
   height: 40rem;
-  color: var(--white);
+  color: #000;
 }
+
 form.goal h2 {
   margin-top: 2rem;
 }
@@ -151,6 +156,7 @@ form.exercises h2 {
 form label {
   display: block;
   padding: 1rem;
+  color: white;
 }
 
 .form-group {
@@ -184,6 +190,7 @@ form.signup button {
   margin-top: 3rem;
   letter-spacing: 1px;
 }
+
 form.login button {
   width: 100%;
   padding: 1.4rem;
@@ -202,6 +209,7 @@ form.login button {
 ::placeholder {
   color: var(--white);
 }
+
 .form-group input {
   width: 100%;
   padding: 1.2rem 1.5rem;
@@ -219,7 +227,7 @@ input {
   border: 1px solid #c8c8c8;
   border-radius: 4px;
   transition: border 300ms;
-  
+
 }
 
 input:hover {
@@ -245,11 +253,41 @@ form h1 {
   color: var(--white);
 }
 
-.chart-container {
-  width: 80rem;
+.chart-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
 }
 
-.chart-container h1, .chart-container h2 {
+.chart-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(249, 249, 249, 0.149);
+  border-radius: 8px;
+}
+
+.chart-container {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .chart-wrapper {
+    padding: 10px;
+  }
+  
+  .chart-page {
+    padding: 1rem;
+  }
+}
+
+.chart-container h1,
+.chart-container h2 {
   text-align: center;
 }
 
@@ -278,7 +316,8 @@ form h1 {
   /* background-color: pink; */
 }
 
-.exercises-table, .goals-table {
+.exercises-table,
+.goals-table {
   width: 70%;
   max-width: 1000px;
   padding-top: 0;
@@ -291,6 +330,7 @@ form h1 {
 
 .table-header {
   display: flex;
+  margin-top: 10%;
   align-items: center;
 }
 
@@ -310,7 +350,7 @@ form h1 {
   position: relative;
 }
 
-.table-header button > span {
+.table-header button>span {
   padding-right: .5rem;
 }
 
@@ -324,7 +364,8 @@ form h1 {
   border-collapse: collapse;
 }
 
-.table table th, .table table td {
+.table table th,
+.table table td {
   padding: 1rem;
   color: var(--white);
 }
@@ -335,10 +376,11 @@ form h1 {
 }
 
 .table table th {
-  text-align: left; 
+  text-align: left;
 }
 
-td.options, th.options {
+td.options,
+th.options {
   display: table-cell;
   width: 100px;
 }
@@ -354,14 +396,15 @@ td.options button {
 td.options button:hover {
   cursor: pointer;
 }
+
 /* Google Material Icons */
 
 .material-symbols-outlined {
   font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
 }
 
 .material-icon {
@@ -389,7 +432,7 @@ td.options button:hover {
 .popup button {
   margin: 3rem auto;
   background-color: var(--main-color);
-  color: #fff; 
+  color: #fff;
 }
 
 .close {
@@ -440,7 +483,8 @@ option {
   align-items: center;
 }
 
-.editable-input-select label, .editable-input-select label + * {
+.editable-input-select label,
+.editable-input-select label+* {
   display: inline-block;
 }
 
@@ -536,19 +580,21 @@ option {
 
 .goals-container h2 {
   text-align: center;
+  color: white;
 }
 
 input#time {
   padding-left: 1rem;
   width: 100%;
-  color: var(--grey);
+  color: black;
+  background-color: white;
 }
 
-input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: button;
-    width: 1em;
-    opacity: .8;
+  -webkit-appearance: button;
+  width: 1em;
+  opacity: .8;
 }
 
 .success {
@@ -572,6 +618,6 @@ a.active {
   font-weight: 700;
 }
 
-.table-header h2{
+.table-header h2 {
   color: var(--white);
 }

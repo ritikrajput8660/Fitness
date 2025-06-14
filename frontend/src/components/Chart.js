@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useWorkoutContext } from "../hooks/useWorkoutContext";
-import { useGetWeekDates } from "../hooks/useGetWeekDates";
-
+import { useWorkoutContext } from '../hooks/useWorkoutContext'
+import { Bar } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,8 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+} from 'chart.js'
 
 ChartJS.register(
   CategoryScale,
@@ -20,85 +18,93 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-);
+)
 
-
-ChartJS.defaults.color = 'rgb(255, 255, 255)'; // For light text on dark background
-ChartJS.defaults.scale.grid.color = 'rgb(255, 255, 255)'; // For grid lines
-ChartJS.defaults.font.size=16;
-
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-  },
-};
-
-const labels = ['Sunday', 'Monday', 'Tuesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-
+const labels = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 function Chart({ modifier }) {
   const { workouts } = useWorkoutContext()
-  const [data, setData] = useState({
+  const [chartData, setChartData] = useState({
     labels,
     datasets: []
   })
-  const getWeekDates =  useGetWeekDates()
 
   useEffect(() => {
-    const [startDate, endDate] = getWeekDates(modifier * 7)
-    const weeklyWorkouts = workouts.filter((workout) => {
-      const date = new Date(workout.updatedAt)
-      return (date > startDate && date < endDate)
-    })
+    if (!workouts.length) return
 
-    const newDatasets = []
+    // Process workout data
+    const processedData = workouts.reduce((acc, workout) => {
+      const dayIndex = new Date(workout.createdAt).getDay()
+      const exerciseName = workout.exercise[0].name
 
-    weeklyWorkouts.forEach((workout) => {
-      if (newDatasets.length === 0) {
-        newDatasets.push({
-          label: workout.exercise[0].name,
-          data: [0,0,0,0,0,0,0],
-          backgroundColor: workout.exercise[0].color
-        })
-      } else {
-        let isSeen = false
-        newDatasets.forEach((dataset) => {
-          if (dataset.label === workout.exercise[0].name) {
-            isSeen = true
-          }
-        })
-        if (isSeen === false) {
-          newDatasets.push({
-            label: workout.exercise[0].name,
-            data: [0,0,0,0,0,0,0],
-            backgroundColor: workout.exercise[0].color
-          })
+      if (!acc[exerciseName]) {
+        acc[exerciseName] = {
+          label: exerciseName,
+          data: new Array(7).fill(0),
+          backgroundColor: workout.exercise[0].color || '#2785c3',
+          borderColor: 'rgb(255, 248, 248)',
+          borderWidth: 1
         }
       }
-    })
 
-    weeklyWorkouts.forEach((workout) => {
-      const day = new Date(workout.createdAt).getDay()
-      newDatasets.forEach((dataset) => {
-        if (dataset.label === workout.exercise[0].name) {
-          dataset.data[day] += workout.time
-        }
-      })
-    })
+      // Add workout time or count to the appropriate day
+      acc[exerciseName].data[dayIndex] += workout.time || 1
 
-    setData({
+      return acc
+    }, {})
+
+    // Convert processed data to chart format
+    const datasets = Object.values(processedData)
+
+    setChartData({
       labels,
-      datasets: newDatasets
+      datasets
     })
-    
-  }, [workouts, modifier])
+  }, [workouts])
 
-  return <Bar options={options} data={data} />
-  
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          color: '#ffffff',
+          font: { size: 14 }
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        grid: {
+          color: 'rgba(255, 255, 255, 0.5)'
+        },
+        ticks: {
+          color: '#ffffff'
+        }
+      },
+      x: {
+        grid: {
+          color: 'rgba(255, 255, 255, 0.55)'
+        },
+        ticks: {
+          color: '#ffffff'
+        }
+      }
+    }
+  }
+
+  return (
+    <div className="chart-wrapper">
+      <div className="chart-container">
+        <Bar
+          data={chartData}
+          options={options}
+        />
+      </div>
+    </div>
+  )
 }
 
 export default Chart;

@@ -31,7 +31,7 @@ export default function EditableGoalRow({ goal, setError, exercises }) {
   const { user } = useAuthContext()
   const { dispatch: dispatchGoal } = useGoalContext()
   const { dispatch: dispatchWorkout, workouts } = useWorkoutContext()
-  const getWeekDates =  useGetWeekDates()
+  const getWeekDates = useGetWeekDates()
 
   const editRef = useRef()
   const formRef = useRef()
@@ -42,10 +42,10 @@ export default function EditableGoalRow({ goal, setError, exercises }) {
         "Authorization": `Bearer ${user.token}`
       }
     })
-    .then((response) => response.json())
-    .then((result) => {
-      dispatchWorkout({ type: "SET_WORKOUTS", payload: result })
-    })
+      .then((response) => response.json())
+      .then((result) => {
+        dispatchWorkout({ type: "SET_WORKOUTS", payload: result })
+      })
   }, [dispatchWorkout, user.token])
 
   const handleSubmit = (e) => {
@@ -82,7 +82,7 @@ export default function EditableGoalRow({ goal, setError, exercises }) {
     }
 
     fetchData()
-  } 
+  }
 
   const handleChangeExercise = (e) => {
     setExercise(e.value)
@@ -107,7 +107,7 @@ export default function EditableGoalRow({ goal, setError, exercises }) {
         "Authorization": `Bearer ${user.token}`
       }
     })
-    .catch(e => console.log(e))
+      .catch(e => console.log(e))
 
     dispatchGoal({ type: "DELETE_GOAL", payload: goal })
   }
@@ -129,7 +129,7 @@ export default function EditableGoalRow({ goal, setError, exercises }) {
         workoutTotalFrequency++
       }
     })
-    
+
     if (goalType === "time") {
       return workoutTotalTime
     } else {
@@ -146,7 +146,7 @@ export default function EditableGoalRow({ goal, setError, exercises }) {
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside)
-    return () => {document.removeEventListener('click', handleClickOutside)}
+    return () => { document.removeEventListener('click', handleClickOutside) }
   }, [])
 
   const handleChangeGoalType = (e) => {
@@ -174,40 +174,40 @@ export default function EditableGoalRow({ goal, setError, exercises }) {
       <td>
         {
           isEdit
-          ? <ExerciseSelect 
-            exercises={exercises}
-            onChange={handleChangeExercise}
-            defaultValue={{label: goal.exercise[0].name, value: goal.exercise[0]._id}}
-          />
-          : <span className='dot'>{goal.exercise[0].name} <Dot color={goal.exercise[0].color} /> </span>
+            ? <ExerciseSelect
+              exercises={exercises}
+              onChange={handleChangeExercise}
+              defaultValue={{ label: goal.exercise[0].name, value: goal.exercise[0]._id }}
+            />
+            : <span className='dot'>{goal.exercise[0].name} <Dot color={goal.exercise[0].color} /> </span>
         }
       </td>
       <td>
         {
           isEdit
-          ? <form className='editable-form' onSubmit={() => {}}>
+            ? <form className='editable-form' onSubmit={() => { }}>
               <div className='form-group flex-row'>
-                <Select 
+                <Select
                   options={goalTypeOptions}
                   onChange={handleChangeGoalType}
-                  defaultValue={{label: formattedGoalType, value: goalType}}
+                  defaultValue={{ label: formattedGoalType, value: goalType }}
                 />
               </div>
             </form>
-          : <span>{formattedGoalType}</span>
+            : <span className={`goal-type ${goal.goal_type}`}>{formattedGoalType}</span>
         }
       </td>
-      <td className={ goalType === "time" ? "editable-form-time" : null}>
+      <td className={goalType === "time" ? "editable-form-time" : null}>
         {
           isEdit
-          ? <form 
+            ? <form
               className="editable-form"
-              onSubmit={() => {}}
+              onSubmit={() => { }}
             >
               {
                 goalType === "time"
                 &&
-                <TimeInput 
+                <TimeInput
                   time={time}
                   setTime={setTime}
                   noLabel={true}
@@ -217,7 +217,7 @@ export default function EditableGoalRow({ goal, setError, exercises }) {
                 goalType === "frequency"
                 &&
                 <div className='form-group time-form-group'>
-                  <input 
+                  <input
                     className='frequency-input'
                     type="number"
                     onChange={handleChangeFrequency}
@@ -228,23 +228,23 @@ export default function EditableGoalRow({ goal, setError, exercises }) {
                 </div>
               }
             </form>
-          : <span>{goal.goal_type === "time" ? `${goal.time} minutes` : `${goal.frequency} times`}</span>
+            : <span>{goal.goal_type === "time" ? `${goal.time} minutes` : `${goal.frequency} times`}</span>
         }
       </td>
-      
+
       <td>
         <form className='editable-form editable-form-last' onSubmit={handleSubmit}>
           {
-            <span className={remaining <= 0 ? "success" : "danger"}> 
+            <span className={remaining <= 0 ? "success" : "danger"}>
               {remaining} {goalType === "time" ? remaining === 1 ? "minute" : "minutes" : remaining === 1 ? "time" : "times"}
             </span>
           }
           {
             isEdit
-            ? <button className='editable-form-btn'>Save</button>
-            : null
+              ? <button className='editable-form-btn'>Save</button>
+              : null
           }
-          
+
         </form>
       </td>
 
@@ -254,8 +254,8 @@ export default function EditableGoalRow({ goal, setError, exercises }) {
             <span className="material-symbols-outlined" ref={editRef}>
               {
                 isEdit
-                ? "close"
-                : "edit"
+                  ? "close"
+                  : "edit"
               }
             </span>
           </button>
