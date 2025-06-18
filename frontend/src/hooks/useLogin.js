@@ -1,32 +1,37 @@
 // Custom hook to handle logging in
 
-import { useState } from 'react';
-import { useAuthContext } from './useAuthContext';
-import axiosInstance from '../utils/axios';
+import { useState } from "react"
+import { useAuthContext } from "./useAuthContext"
 
-export const useLogin = () => {
+export function useLogin() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
-  const { dispatch } = useAuthContext();
+  const { dispatch } = useAuthContext()
 
-  const login = async (email, password) => {
-    setIsLoading(true);
-    setError(null);
+  const login = async (username, password) => {
+    setIsLoading(true)
+    setError(null)
 
-    try {
-      const response = await axiosInstance.post('/api/user/login', {
-        email,
-        password
-      });
+    const response = await fetch("/api/user/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    })
 
-      localStorage.setItem('user', JSON.stringify(response.data));
-      dispatch({ type: 'LOGIN', payload: response.data });
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      setError(error.response?.data?.error || 'An error occurred');
+    const result = await response.json()
+    
+    if (!response.ok) {
+      setIsLoading(false)
+      setError(result.error)
+    } else {
+      // Save the user to local storage
+      localStorage.setItem("user", JSON.stringify(result))
+
+      // Update the Auth Context
+      dispatch({ type: "LOGIN", payload: result })
+      setIsLoading(false)
     }
-  };
+  }
 
-  return { login, isLoading, error };
-};
+  return { login, isLoading, error }
+}
