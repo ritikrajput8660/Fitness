@@ -10,10 +10,7 @@
       required: true,
       unique: true
     },
-    // email:{
-    //   required: true,
-    //   unique: true,
-    // },
+   
     password: {
       type: String,
       required: true
